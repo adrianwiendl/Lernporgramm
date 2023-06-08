@@ -1,0 +1,324 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* padding: 0; */
+
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    text-align: center;
+    padding: 0rem;
+    position: relative;
+    /* display: flex; */
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.burger div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: #333;
+    /* Or any color of your choice */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.burger:hover {
+    background: transparent;
+    border: none;
+}
+
+header {
+    background-color: #4CAF50;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+    display: inline;
+}
+
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    /* Stay at the left */
+    height: 100%;
+    /* Full height */
+    width: 100%;
+    /* Full width */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    z-index: 1;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
+
+nav li:hover {
+    background-color: #ddd;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 1rem 1rem;
+    transition-duration: 0.4s;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+
+    /* Add a transparent border by default */
+}
+
+button:hover {
+    background-color: white;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+
+button.correct {
+    background-color: #4CAF50;
+    cursor: not-allowed;
+}
+
+button.correct:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.incorrect {
+    background-color: #f44336;
+    border: 1px solid #f44336;
+    cursor: not-allowed;
+}
+
+button.incorrect:hover {
+    color: white;
+}
+
+button.disabled {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+}
+
+
+/* Responsive design for different display devices (PC browser, tablet, smartphone) using media queries */
+
+/* For mobile devices and desktops in portrait orientation */
+@media screen and (max-width: 900px),
+(orientation:portrait) {
+
+    aside {
+        display: none;
+    }
+
+    main {
+        height: 80vh;
+    }
+
+    #categories-nav {
+        display: none;
+        position: absolute;
+        width: 90%;
+        /* height: 100%; */
+        transition: all 0.3s ease-out;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        /* overflow-y: scroll; */
+        color: white;
+        background-color: #4CAF50;
+        border-radius: 25px;
+        z-index: 2;
+    }
+
+    button {
+        /* font-size: 0.8rem; */
+        padding: 0.5rem 0.5rem;
+        margin: 0.5rem 0.5rem;
+        max-width: 90%;
+
+    }
+
+    #answer-options,
+    #category-options,
+    #statistics {
+        /* flex-grow: 5; */
+        justify-content: space-around;
+    }
+
+    #answer-options button {
+        display: block;
+        width: 100%;
+    }
+
+    #category-options button {
+        display: block;
+        width: 100%;
+    }
+
+    /* .menu-icon {
+        display: inline;
+        font-size: 1.5rem;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+    } */
+}
+
+/* For desktop browsers and phones in landscape*/
+@media screen and (min-width: 901px) and (orientation: landscape) {
+
+    main {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 8;
+        height: 80vh;
+    }
+
+    header {
+        min-height: 2rem;
+        height: 5vh;
+        max-height: 3rem;
+    }
+
+    footer {
+        background-color: yellow;
+        flex-grow: 1;
+        height: 10vh;
+        max-height: 2rem;
+
+    }
+
+    button {
+        width: 16rem;
+        height: 6rem;
+    }
+
+
+    .burger {
+        display: none;
+    }
+
+    #answer-options button {
+        display: inline-flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        display: block;
+    }
+
+    #categories-nav {
+        order: -1;
+        flex-grow: 1;
+        flex-basis: 15%;
+        background-color: #f1f1f1;
+        /* border-right: 1px solid #ccc; */
+        padding: 1rem;
+        /* position: fixed; */
+        /* top: 100px; */
+        /* Adjust the value based on the header height */
+        left: 0;
+        /* width: 220px; */
+        /* height: 100%; */
+        /* Adjust the value based on the header height */
+        overflow: auto;
+        /* display: none; */
+        /* Initially hide the navigation menu */
+        max-width: 16rem;
+    }
+
+    aside {
+        order: 99;
+        flex-grow: 1;
+        flex-basis: 15%;
+        background-color: blue;
+        max-width: 16rem;
+    }
+
+    #task-selection,
+    #task-display,
+    #statistics {
+        flex-grow: 3;
+        order: 1;
+        flex-basis: 70%;
+    }
+
+    /* #nav ul {
+        position: relative;
+        z-index: 2;
+    } */
+
+
+
+    .overlay {
+        display: none;
+    }
+
+    #close-menu-btn {
+        display: none;
+    }
+
+    /* button.disabled {
+        background-color: #ccc;
+        color: #888;
+        cursor: not-allowed;
+        border: 1px solid #ccc;
+    } */
+}
+
+
+/* Example of a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    /* No additional tablet-specific styles are necessary in this example */
+}

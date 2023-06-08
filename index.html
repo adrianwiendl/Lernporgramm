@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- kaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+        integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+        integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+        crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+        integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+
+
+    <title>Learning App</title>
+</head>
+
+<body>
+    <header>
+        <h1> <a href="index.html" id="hidden-link"> Learning App</a></h1>
+        <button class="burger" onclick="toggleNavMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+    </header>
+    <div id="overlay"></div>
+    <main>
+        <aside id="aside-sidebar">Sidebar</aside>
+        <nav id="categories-nav" hidden>
+            <ul>
+                <!-- Add menu items to navigastion menu -->
+                <li onclick="closeNavMenu('part-math')">Mathematics</li>
+                <li onclick="closeNavMenu('part-internet-technologies')">Internet Technologies</li>
+                <li onclick="closeNavMenu('part-general-knowledge')">General Knowledge</li>
+                <li onclick="closeNavMenu('external')">Personen (Extern)</li>
+                <br>
+                <li onclick="returnToStart()">Return to Start</li>
+                <li id="close-menu-btn" onclick="toggleNavMenu()">Close Menu</li>
+            </ul>
+        </nav>
+        <section id="task-selection">
+            <h2>Select a task category:</h2>
+            <div id="category-options">
+                <button onclick="selectCategory('part-math')">Mathematics</button>
+                <button onclick="selectCategory('part-internet-technologies')">Internet Technologies</button>
+                <button onclick="selectCategory('part-general-knowledge')">General Knowledge</button>
+                <button onclick="selectCategory('external')">Personen (Extern)</button>
+            </div>
+        </section>
+        <section id="task-display" hidden>
+            <h2 id="task-title"></h2>
+            <div id="task-content"></div>
+            <div id="answer-options">
+                <button class="answer-btn" onclick="submitAnswer(0)"></button>
+                <button class="answer-btn" onclick="submitAnswer(1)"></button>
+                <button class="answer-btn" onclick="submitAnswer(2)"></button>
+                <button class="answer-btn" onclick="submitAnswer(3)"></button>
+            </div>
+            <div id="task-feedback" hidden></div>
+            <button id="next-task-btn" onclick="displayNextTask()" hidden>Next Task</button>
+        </section>
+        <section id="statistics" hidden>
+            <h2>Statistics</h2>
+            <p>Correct answers: <span id="correct-answers">0</span></p>
+            <p>% of correct answers: <span id="percent-correct-answers">0</span></p>
+            <p>Total tasks: <span id="total-tasks">0</span></p>
+        </section>
+    </main>
+    <footer id="footer-info">Footer</footer>
+    <script src="tasks.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
