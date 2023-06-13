@@ -95,6 +95,8 @@ function displayTask(task) {
 
   document.getElementById("task-content").innerHTML = "";
 
+  updateAside();
+
   let answerButtons = document.getElementsByClassName("answer-btn");
   for (let i = 0; i < answerOptions.length; i++) {
     // Render the option with KaTeX if the category is 'part-math'
@@ -175,17 +177,17 @@ function showAnswerResult(correct) {
   if (correct === true) {
     correctAnswers++;
     document.getElementById("correct-answers").textContent = correctAnswers;
-
-
   }
   lblTaskFeedback.textContent = correct ? "Correct!" : "Incorrect";
   lblTaskFeedback.hidden = false;
   btnNextTask.hidden = false;
+  updateAside();
 }
 
 function showStatistics() {
   document.getElementById("task-display").hidden = true;
   document.getElementById("statistics").hidden = false;
+  // document.getElementById("aside-sidebar").hidden = true;
 
   let totalTasks = currentTaskIndex;
   document.getElementById("total-tasks").textContent = totalTasks;
@@ -244,4 +246,10 @@ function shuffleArray(array) {
   }
 
   return array;
+}
+
+function updateAside() {
+  document.getElementById('current-task').textContent = currentTaskIndex + 1;
+  document.getElementById('correct-tasks').textContent = correctAnswers;
+  //document.getElementById('tasks-remaining').textContent = tasksRemaining;
 }

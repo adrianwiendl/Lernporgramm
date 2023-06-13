@@ -165,13 +165,14 @@ button.disabled {
 (orientation:portrait) {
 
     aside {
-        display: none;
+        /* display: none; */
+        order: 2;
     }
 
     main {
         height: 80vh;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
 
     #categories-nav {
@@ -201,7 +202,7 @@ button.disabled {
     #task-selection,
     #task-display,
     #statistics {
-        flex-grow: 3;
+        /* flex-grow: 3; */
         order: 1;
         /* flex-basis: 70%; */
     }
