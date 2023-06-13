@@ -8,9 +8,10 @@ self.addEventListener('install', (event) => {
     caches.open('my-cache').then((cache) => {
       return cache.addAll([
         'index.html',
-        'style.css',
+        'styles.css',
         'main.js',
         'tasks.js',
+        'resources/tasks.json'
       ]);
     })
   );

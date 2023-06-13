@@ -11,6 +11,8 @@ body {
 
 header {
     text-align: center;
+    background-color: #4CAF50;
+    padding: 1rem;
 }
 
 main {
@@ -31,6 +33,7 @@ main {
     cursor: pointer;
     padding: 0;
     z-index: 10;
+    order: -1;
 }
 
 .burger div {
@@ -40,7 +43,7 @@ main {
     /* Or any color of your choice */
     border-radius: 10px;
     transition: all 0.3s linear;
-    position: relative;
+    /* position: relative; */
     transform-origin: 1px;
 }
 
@@ -49,32 +52,37 @@ main {
     border: none;
 }
 
-header {
-    background-color: #4CAF50;
-    padding: 1rem;
+#burger-button-centerer {
+    order: 1;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
 }
 
 header h1 {
     margin: 0;
-    display: inline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header a {
     text-decoration: none;
     color: inherit;
+    position: center;
+    order: 0;
 }
+
+
+
+
 
 #overlay {
     display: none;
     position: fixed;
-    top: 0;
-    /* Stay at the top */
-    left: 0;
-    /* Stay at the left */
     height: 100%;
-    /* Full height */
     width: 100%;
-    /* Full width */
     background-color: rgba(0, 0, 0, 0.5);
     /* Black background with opacity */
     z-index: 1;
@@ -162,21 +170,20 @@ button.disabled {
 
     main {
         height: 80vh;
+        display: flex;
+        flex-direction: row;
     }
 
     #categories-nav {
         display: none;
         position: absolute;
-        width: 90%;
-        /* height: 100%; */
+        left: 1rem;
+        right: 1rem;
         transition: all 0.3s ease-out;
         text-align: center;
         padding: 1rem;
         margin-top: 2rem;
         margin-bottom: 2rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        /* overflow-y: scroll; */
         color: white;
         background-color: #4CAF50;
         border-radius: 25px;
@@ -191,20 +198,27 @@ button.disabled {
 
     }
 
-    #answer-options,
-    #category-options,
+    #task-selection,
+    #task-display,
     #statistics {
-        /* flex-grow: 5; */
+        flex-grow: 3;
+        order: 1;
+        /* flex-basis: 70%; */
+    }
+
+    /* #answer-options,
+    #category-options,
+    #statistics { */
+    /* flex-grow: 5; */
+    /* left: 1rem;
+        right: 1rem;
+        position: absolute;
         justify-content: space-around;
-    }
+    } */
 
-    #answer-options button {
-        display: block;
-        width: 100%;
-    }
-
+    #answer-options button,
     #category-options button {
-        display: block;
+        /* display: block; */
         width: 100%;
     }
 
@@ -219,6 +233,16 @@ button.disabled {
 /* For desktop browsers and phones in landscape*/
 @media screen and (min-width: 901px) and (orientation: landscape) {
 
+
+    .burger,
+    #burger-button-centerer {
+        display: none;
+    }
+
+    header h1 {
+        display: block;
+    }
+
     main {
         display: flex;
         flex-direction: row;
@@ -230,6 +254,7 @@ button.disabled {
         min-height: 2rem;
         height: 5vh;
         max-height: 3rem;
+        display: block;
     }
 
     footer {
@@ -246,9 +271,7 @@ button.disabled {
     }
 
 
-    .burger {
-        display: none;
-    }
+
 
     #answer-options button {
         display: inline-flex;
@@ -265,18 +288,9 @@ button.disabled {
         flex-grow: 1;
         flex-basis: 15%;
         background-color: #f1f1f1;
-        /* border-right: 1px solid #ccc; */
         padding: 1rem;
-        /* position: fixed; */
-        /* top: 100px; */
-        /* Adjust the value based on the header height */
         left: 0;
-        /* width: 220px; */
-        /* height: 100%; */
-        /* Adjust the value based on the header height */
         overflow: auto;
-        /* display: none; */
-        /* Initially hide the navigation menu */
         max-width: 16rem;
     }
 

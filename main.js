@@ -79,7 +79,7 @@ async function displayNextTask() {
 
 function displayTask(task) {
   btnNextTask.disabled = true;
-  btnNextTask.classList.add("disabled"); 
+  btnNextTask.classList.add("disabled");
 
   let answerOptions = task.l.map((text, index) => ({ text, correct: index === 0 }));
   shuffleArray(answerOptions);
@@ -119,7 +119,7 @@ function displayTask(task) {
 
 function displayExternalTask() {
   btnNextTask.disabled = true;
-  btnNextTask.classList.add("disabled"); 
+  btnNextTask.classList.add("disabled");
 
   const task = externalTasks[currentTaskIndex];
   console.log(currentTaskIndex + ": " + task.text);
@@ -164,9 +164,8 @@ function submitAnswer(answerButton) {
 
 function showAnswerResult(correct) {
   btnNextTask.disabled = false;
-  btnNextTask.classList.remove("disabled"); 
+  btnNextTask.classList.remove("disabled");
 
-  // document.getElementById("next-task-btn").disabled = false;
   let answerButtons = document.getElementsByClassName("answer-btn");
   for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].classList.add("disabled");
@@ -228,8 +227,7 @@ function closeNavMenu(category) {
   selectCategory(category)
 }
 
-function toggleButtonDisable(button)
-{
+function toggleButtonDisable(button) {
   //button.disabled = !button.disabled;
   //button.classList.
 }
