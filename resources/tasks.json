@@ -1,0 +1,442 @@
+{
+  "part-math": [
+    {
+      "a": "x^2+x^2",
+      "l": [
+        "2x^2",
+        "x^4",
+        "x^8",
+        "2x^4"
+      ]
+    },
+    {
+      "a": "x^2\\cdot x^2",
+      "l": [
+        "x^4",
+        "x^2",
+        "2x^2",
+        "4x"
+      ]
+    },
+    {
+      "a": "x^3+x^3",
+      "l": [
+        "2x^3",
+        "x^6",
+        "x^9",
+        "2x^6"
+      ]
+    },
+    {
+      "a": "x^3\\cdot x^3",
+      "l": [
+        "x^6",
+        "x^3",
+        "2x^3",
+        "6x"
+      ]
+    },
+    {
+      "a": "\\sin^2(x)+\\cos^2(x)",
+      "l": [
+        "1",
+        "2",
+        "0",
+        "x"
+      ]
+    },
+    {
+      "a": "\\frac{d}{dx} (x^2)",
+      "l": [
+        "2x",
+        "x^2",
+        "x",
+        "2"
+      ]
+    },
+    {
+      "a": "\\int x\\, dx \\text{ from } 0 \\text{ to } 1",
+      "l": [
+        "0.5",
+        "1",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "a": "\\lim_{{x\\to 0}} \\left(\\frac{\\sin(x)}{x}\\right)",
+      "l": [
+        "1",
+        "0",
+        "x",
+        "\\infty"
+      ]
+    },
+    {
+      "a": "\\int e^x\\, dx \\text{ from } 0 \\text{ to } 1",
+      "l": [
+        "e-1",
+        "e",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "a": "\\frac{d}{dx} (e^x)",
+      "l": [
+        "e^x",
+        "x",
+        "e",
+        "1"
+      ]
+    },
+    {
+      "a": "\\int \\frac{1}{x}\\, dx \\text{ from } 1 \\text{ to } e",
+      "l": [
+        "1",
+        "e",
+        "0",
+        "e-1"
+      ]
+    },
+    {
+      "a": "\\lim_{{x\\to \\infty}} \\left(1+\\frac{1}{x}\\right)^x",
+      "l": [
+        "e",
+        "\\infty",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "a": "\\frac{d}{dx} (\\ln(x))",
+      "l": [
+        "\\frac{1}{x}",
+        "x",
+        "\\ln(x)",
+        "1"
+      ]
+    },
+    {
+      "a": "\\int x^2\\, dx \\text{ from } 0 \\text{ to } 1",
+      "l": [
+        "\\frac{1}{3}",
+        "1",
+        "0",
+        "\\frac{1}{2}"
+      ]
+    },
+    {
+      "a": "\\lim_{{x\\to 0}} \\left(\\frac{e^x-1}{x}\\right)",
+      "l": [
+        "1",
+        "0",
+        "e",
+        "\\infty"
+      ]
+    }
+  ],
+  "part-internet-technologies": [
+    {
+      "a": "Which authentication method does HTTP offer",
+      "l": [
+        "Digest Access Authentication",
+        "OTP",
+        "OAuth",
+        "2-Factor Authentication"
+      ]
+    },
+    {
+      "a": "Which transport protocol is suitable for time-critical transmissions",
+      "l": [
+        "UDP",
+        "TCP",
+        "HTTP",
+        "Fast Retransmit"
+      ]
+    },
+    {
+      "a": "What authentication method does OAuth 2.0 primarily use?",
+      "l": [
+        "Bearer Token",
+        "JWT",
+        "SAML",
+        "Kerberos"
+      ]
+    },
+    {
+      "a": "Which transport protocol provides guaranteed delivery and in-order packet delivery?",
+      "l": [
+        "TCP",
+        "UDP",
+        "HTTP",
+        "ICMP"
+      ]
+    },
+    {
+      "a": "What is the purpose of the OSI model?",
+      "l": [
+        "To provide a conceptual framework for understanding network protocols",
+        "To define the physical components of a network",
+        "To regulate internet access",
+        "To ensure data confidentiality"
+      ]
+    },
+    {
+      "a": "Which protocol is commonly used for secure remote shell access?",
+      "l": [
+        "SSH",
+        "Telnet",
+        "RDP",
+        "VNC"
+      ]
+    },
+    {
+      "a": "What is the primary purpose of a proxy server?",
+      "l": [
+        "To act as an intermediary between clients and servers",
+        "To encrypt network traffic",
+        "To prevent DDoS attacks",
+        "To manage domain name registrations"
+      ]
+    },
+    {
+      "a": "Which protocol is used for secure email communication?",
+      "l": [
+        "S/MIME",
+        "POP3",
+        "IMAP",
+        "SMTP"
+      ]
+    },
+    {
+      "a": "What is the main function of a network switch?",
+      "l": [
+        "To forward data packets to the appropriate destination",
+        "To convert digital signals to analog signals",
+        "To establish VPN connections",
+        "To perform network address translation"
+      ]
+    },
+    {
+      "a": "Which protocol is responsible for dynamically assigning IP addresses to devices on a network?",
+      "l": [
+        "DHCP",
+        "DNS",
+        "ARP",
+        "RARP"
+      ]
+    },
+    {
+      "a": "What is the purpose of a subnet mask?",
+      "l": [
+        "To determine the network and host portions of an IP address",
+        "To encrypt data during transmission",
+        "To prevent unauthorized access to a network",
+        "To establish secure connections"
+      ]
+    },
+    {
+      "a": "Which protocol is used for secure web browsing?",
+      "l": [
+        "HTTPS",
+        "HTTP",
+        "FTP",
+        "SNMP"
+      ]
+    },
+    {
+      "a": "What does the abbreviation SSL stand for in networking?",
+      "l": [
+        "Secure Socket Layer",
+        "Simple Service Locator",
+        "Standard Syntax Language",
+        "Structured Systems Language"
+      ]
+    },
+    {
+      "a": "Which protocol is commonly used for transferring files securely?",
+      "l": [
+        "SFTP",
+        "FTPS",
+        "SCP",
+        "TFTP"
+      ]
+    },
+    {
+      "a": "What is the purpose of a network firewall?",
+      "l": [
+        "To monitor and control network traffic based on security rules",
+        "To optimize network performance",
+        "To establish VPN connections",
+        "To distribute network resources"
+      ]
+    }
+  ],
+  "part-general-knowledge": [
+    {
+      "a": "Which country has the highest number of UNESCO World Heritage Sites?",
+      "l": [
+        "Italy",
+        "China",
+        "Spain",
+        "France"
+      ]
+    },
+    {
+      "a": "Who wrote the book 'War and Peace'?",
+      "l": [
+        "Leo Tolstoy",
+        "Fyodor Dostoevsky",
+        "Anton Chekhov",
+        "Aleksandr Solzhenitsyn"
+      ]
+    },
+    {
+      "a": "Which planet has the most moons?",
+      "l": [
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ]
+    },
+    {
+      "a": "In which year did the French Revolution begin?",
+      "l": [
+        "1789",
+        "1804",
+        "1848",
+        "1917"
+      ]
+    },
+    {
+      "a": "Who is the artist behind the famous painting 'The Starry Night'?",
+      "l": [
+        "Vincent van Gogh",
+        "Salvador Dalí",
+        "Edvard Munch",
+        "Claude Monet"
+      ]
+    },
+    {
+      "a": "Which mountain range is home to Mount Kilimanjaro?",
+      "l": [
+        "Eastern Rift Mountains",
+        "Himalayas",
+        "Andes",
+        "Rocky Mountains"
+      ]
+    },
+    {
+      "a": "Which city hosted the 2008 Summer Olympics?",
+      "l": [
+        "Beijing",
+        "Athens",
+        "Sydney",
+        "Los Angeles"
+      ]
+    },
+    {
+      "a": "Who composed the Symphony No. 9 in D minor, also known as 'Choral'?",
+      "l": [
+        "Ludwig van Beethoven",
+        "Wolfgang Amadeus Mozart",
+        "Johannes Brahms",
+        "Franz Schubert"
+      ]
+    },
+    {
+      "a": "Which river is the longest in South America?",
+      "l": [
+        "Amazon River",
+        "Paraná River",
+        "Orinoco River",
+        "Magdalena River"
+      ]
+    },
+    {
+      "a": "What is the chemical symbol for silver?",
+      "l": [
+        "Ag",
+        "Au",
+        "Hg",
+        "Pt"
+      ]
+    },
+    {
+      "a": "Which country is home to the ancient city of Petra?",
+      "l": [
+        "Jordan",
+        "Egypt",
+        "Greece",
+        "Turkey"
+      ]
+    },
+    {
+      "a": "Which instrument did Johann Sebastian Bach primarily play?",
+      "l": [
+        "Organ",
+        "Harpsichord",
+        "Violin",
+        "Cello"
+      ]
+    },
+    {
+      "a": "Who painted 'The Persistence of Memory'?",
+      "l": [
+        "Salvador Dalí",
+        "Pablo Picasso",
+        "Claude Monet",
+        "Georgia O'Keeffe"
+      ]
+    },
+    {
+      "a": "What is the deepest part of the world's oceans?",
+      "l": [
+        "Mariana Trench",
+        "Puerto Rico Trench",
+        "Java Trench",
+        "Philippine Trench"
+      ]
+    },
+    {
+      "a": "Which country won the FIFA World Cup in 2006?",
+      "l": [
+        "Italy",
+        "France",
+        "Germany",
+        "Brazil"
+      ]
+    },
+    {
+      "a": "Who wrote the novel 'Pride and Prejudice'?",
+      "l": [
+        "Jane Austen",
+        "Emily Brontë",
+        "Charlotte Brontë",
+        "Virginia Woolf"
+      ]
+    }
+  ],
+  "part-sheet-music": [
+    {
+      "a": "C4",
+      "l": [
+        "C",
+        "D",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "a": "(C4 E4 G4)",
+      "l": [
+        "C",
+        "B",
+        "F",
+        "D"
+      ]
+    }
+  ]
+}

@@ -15,6 +15,10 @@ let currentCategory = "";
 let currentTaskIndex = -1;
 let correctAnswers = 0;
 
+// Set variables for commonly used document elements
+let btnNextTask = document.getElementById("next-task-btn");
+let lblTaskFeedback = document.getElementById("task-feedback");
+
 
 async function selectCategory(category) {
   currentCategory = category;
@@ -39,8 +43,8 @@ async function selectCategory(category) {
 }
 
 async function displayNextTask() {
-  document.getElementById("task-feedback").hidden = true;
-  document.getElementById("next-task-btn").hidden = true;
+  lblTaskFeedback.hidden = true;
+  btnNextTask.hidden = true;
   // document.getElementById("next-task-btn").disabled = true;
   currentTaskIndex++;
 
@@ -55,7 +59,7 @@ async function displayNextTask() {
         console.error("Fetching tasks from server failed: ", error);
       }
     }
-    if (currentTaskIndex < externalTasks.length & currentTaskIndex < 32)  //necessary hard-coded limit to prevent unsuitable tasks 
+    if (currentTaskIndex < externalTasks.length & currentTaskIndex < 32)  //necessary hard-coded limit to prevent unsuitable tasks from being loaded
     {
       displayExternalTask();
     }
@@ -74,7 +78,8 @@ async function displayNextTask() {
 }
 
 function displayTask(task) {
-  document.getElementById("next-task-btn").disabled = true;
+  btnNextTask.disabled = true;
+  btnNextTask.classList.add("disabled"); 
 
   let answerOptions = task.l.map((text, index) => ({ text, correct: index === 0 }));
   shuffleArray(answerOptions);
@@ -113,7 +118,8 @@ function displayTask(task) {
 }
 
 function displayExternalTask() {
-  document.getElementById("next-task-btn").disabled = true;
+  btnNextTask.disabled = true;
+  btnNextTask.classList.add("disabled"); 
 
   const task = externalTasks[currentTaskIndex];
   console.log(currentTaskIndex + ": " + task.text);
@@ -144,7 +150,7 @@ function displayExternalTask() {
 }
 
 function submitAnswer(answerButton) {
-  if (document.getElementById("next-task-btn").hidden) {
+  if (btnNextTask.hidden) {
     let correct = (answerButton.dataset.correct === 'true');
     showAnswerResult(correct);
 
@@ -157,7 +163,8 @@ function submitAnswer(answerButton) {
 }
 
 function showAnswerResult(correct) {
-  document.getElementById("next-task-btn").disabled = false;
+  btnNextTask.disabled = false;
+  btnNextTask.classList.remove("disabled"); 
 
   // document.getElementById("next-task-btn").disabled = false;
   let answerButtons = document.getElementsByClassName("answer-btn");
@@ -172,9 +179,9 @@ function showAnswerResult(correct) {
 
 
   }
-  document.getElementById("task-feedback").textContent = correct ? "Correct!" : "Incorrect";
-  document.getElementById("task-feedback").hidden = false;
-  document.getElementById("next-task-btn").hidden = false;
+  lblTaskFeedback.textContent = correct ? "Correct!" : "Incorrect";
+  lblTaskFeedback.hidden = false;
+  btnNextTask.hidden = false;
 }
 
 function showStatistics() {
@@ -194,8 +201,8 @@ function returnToStart() {
   document.getElementById("task-display").hidden = true;
   document.getElementById("statistics").hidden = true;
   document.getElementById("categories-nav").hidden = false; // Show the navigation panel
-  document.getElementById("task-feedback").hidden = true; // Hide the feedback
-  document.getElementById("next-task-btn").hidden = true; // Hide the Next button
+  lblTaskFeedback.hidden = true; // Hide the feedback
+  btnNextTask.hidden = true; // Hide the Next button
 
 }
 
@@ -221,6 +228,11 @@ function closeNavMenu(category) {
   selectCategory(category)
 }
 
+function toggleButtonDisable(button)
+{
+  //button.disabled = !button.disabled;
+  //button.classList.
+}
 
 function shuffleArray(array) {
   let currentIndex = array.length, temporaryValue, randomIndex;

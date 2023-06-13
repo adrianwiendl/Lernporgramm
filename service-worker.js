@@ -2,6 +2,7 @@
 // self.addEventListener("activate", (event) => {
 //   // Clean up old caches
 // });
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('my-cache').then((cache) => {

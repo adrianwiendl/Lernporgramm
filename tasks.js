@@ -2,7 +2,7 @@
 
 //internal Tasks
 let tasks;
-fetch('resources/tasks.json.txt')
+fetch('resources/tasks.json')
   .then(response => response.json())
   .then(data => tasks = data)
   .catch((error) => {
