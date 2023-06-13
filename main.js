@@ -18,6 +18,7 @@ let correctAnswers = 0;
 // Set variables for commonly used document elements
 let btnNextTask = document.getElementById("next-task-btn");
 let lblTaskFeedback = document.getElementById("task-feedback");
+let sctnTaskSelection = document.getElementById("task-selection");
 
 
 async function selectCategory(category) {
@@ -25,7 +26,8 @@ async function selectCategory(category) {
   currentTaskIndex = -1;
   correctAnswers = 0;
 
-  document.getElementById("task-selection").hidden = true;
+  // document.getElementById("task-selection").hidden = true;
+  sctnTaskSelection.hidden = true;
   document.getElementById("statistics").hidden = true;
   document.getElementById("task-display").hidden = false;
   console.log(tasks);
