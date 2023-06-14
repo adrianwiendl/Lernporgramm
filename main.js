@@ -11,14 +11,21 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+//Global variables for keeping track of stuff
 let currentCategory = "";
 let currentTaskIndex = -1;
 let correctAnswers = 0;
 
 // Set variables for commonly used document elements
+let lblCurrentTask = document.getElementById('current-task');
+let lblCorrectTasks = document.getElementById('correct-tasks');
 let btnNextTask = document.getElementById("next-task-btn");
 let lblTaskFeedback = document.getElementById("task-feedback");
+let navCategories = document.getElementById("categories-nav");
 let sctnTaskSelection = document.getElementById("task-selection");
+let sctnTaskDisplay = document.getElementById("task-display");
+let sctnStatistics = document.getElementById("statistics");
+let ovlOverlay = document.getElementById("overlay");
 
 
 async function selectCategory(category) {
@@ -28,8 +35,9 @@ async function selectCategory(category) {
 
   // document.getElementById("task-selection").hidden = true;
   sctnTaskSelection.hidden = true;
-  document.getElementById("statistics").hidden = true;
-  document.getElementById("task-display").hidden = false;
+  sctnStatistics.hidden = true;
+  sctnTaskDisplay.hidden = false;
+  toggleAside();
   console.log(tasks);
 
   if (currentCategory === 'external') {
@@ -47,11 +55,11 @@ async function selectCategory(category) {
 async function displayNextTask() {
   lblTaskFeedback.hidden = true;
   btnNextTask.hidden = true;
-  // document.getElementById("next-task-btn").disabled = true;
   currentTaskIndex++;
 
   if (currentCategory === "external") {
     //External tasks have to be handled differently than internal ones
+    //Fetch new pack of 10 external questions once current set is answered
     if (currentTaskIndex % 10 === 0) {
       try {
         console.log("Fetching external task set " + currentTaskIndex / 10);
@@ -180,7 +188,7 @@ function showAnswerResult(correct) {
     correctAnswers++;
     document.getElementById("correct-answers").textContent = correctAnswers;
   }
-  lblTaskFeedback.textContent = correct ? "Correct!" : "Incorrect";
+  // lblTaskFeedback.textContent = correct ? "Correct!" : "Incorrect";
   lblTaskFeedback.hidden = false;
   btnNextTask.hidden = false;
   updateAside();
@@ -189,7 +197,9 @@ function showAnswerResult(correct) {
 function showStatistics() {
   document.getElementById("task-display").hidden = true;
   document.getElementById("statistics").hidden = false;
-  // document.getElementById("aside-sidebar").hidden = true;
+  //Toggle aside visibility
+  toggleAside();
+
 
   let totalTasks = currentTaskIndex;
   document.getElementById("total-tasks").textContent = totalTasks;
@@ -198,12 +208,19 @@ function showStatistics() {
   document.getElementById("percent-correct-answers").textContent = percentageCorrectAnswers.toFixed(2) + '%';
 }
 
+function toggleAside() {
+  // document.getElementById("aside-sidebar").display = "";
+  // document.getElementById("aside-sidebar").hidden = !document.getElementById("aside-sidebar").hidden;
+  lblCorrectTasks.hidden = !lblCorrectTasks.hidden;
+  lblCurrentTask.hidden = !lblCurrentTask.hidden;
+}
+
 function returnToStart() {
   toggleNavMenu();
-  document.getElementById("task-selection").hidden = false;
-  document.getElementById("task-display").hidden = true;
-  document.getElementById("statistics").hidden = true;
-  document.getElementById("categories-nav").hidden = false; // Show the navigation panel
+  sctnTaskSelection.hidden = false;
+  sctnTaskDisplay.hidden = true;
+  sctnStatistics.hidden = true;
+  navCategories.hidden = false; // Show the navigation panel
   lblTaskFeedback.hidden = true; // Hide the feedback
   btnNextTask.hidden = true; // Hide the Next button
 
@@ -212,8 +229,8 @@ function returnToStart() {
 function toggleNavMenu() {
 
   if (matchMedia('all and (orientation: portrait)').matches) {
-    let navMenu = document.getElementById("categories-nav");
-    navMenu.style.display = (navMenu.style.display === "none" || navMenu.style.display === "") ? "block" : "none";
+    // let navCategories = document.getElementById("categories-nav");
+    navCategories.style.display = (navCategories.style.display === "none" || navCategories.style.display === "") ? "block" : "none";
     let overlay = document.getElementById("overlay");
     overlay.style.display = (overlay.style.display === "none" || overlay.style.display === "") ? "block" : "none";
   }
@@ -221,19 +238,12 @@ function toggleNavMenu() {
 }
 
 function closeNavMenu(category) {
-  let navMenu = document.getElementById("categories-nav");
-  navMenu.style.display = "";
+  navCategories.style.display = "";
 
   if (matchMedia('all and (orientation: portrait)').matches) {
-    let overlay = document.getElementById("overlay");
     overlay.style.display = "";
   }
   selectCategory(category)
-}
-
-function toggleButtonDisable(button) {
-  //button.disabled = !button.disabled;
-  //button.classList.
 }
 
 function shuffleArray(array) {
@@ -251,7 +261,6 @@ function shuffleArray(array) {
 }
 
 function updateAside() {
-  document.getElementById('current-task').textContent = currentTaskIndex + 1;
-  document.getElementById('correct-tasks').textContent = correctAnswers;
-  //document.getElementById('tasks-remaining').textContent = tasksRemaining;
+  lblCurrentTask.textContent = currentTaskIndex + 1;
+  lblCorrectTasks.textContent = correctAnswers;
 }

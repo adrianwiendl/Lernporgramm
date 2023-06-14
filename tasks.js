@@ -13,9 +13,11 @@ fetch('resources/tasks.json')
 let externalTasks = [];
 const user = "test@gmail.com";
 const pass = "secret";
+const server = "https://irene.informatik.htw-dresden.de:8888/api/quizzes";
 
 async function fetchQuiz(id) {
-  const url = `https://irene.informatik.htw-dresden.de:8888/api/quizzes?page=${id}`;
+  const url = server + `?page=${id}`;
+  // console.log(url);
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + btoa(user + ':' + pass));
 
@@ -39,8 +41,8 @@ async function fetchQuiz(id) {
 }
 
 async function checkAnswer(taskId, answerId) {
-  console.log("Checking answer...");
-  const url = `https://irene.informatik.htw-dresden.de:8888/api/quizzes/${taskId}/solve`;
+  console.log("Checking answer " + answerId + " for task " + taskId + "...");
+  const url = server + `/${taskId}/solve`;
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Authorization', 'Basic ' + btoa(user + ':' + pass));
