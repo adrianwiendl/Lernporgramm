@@ -149,6 +149,10 @@ button.disabled {
     border: 1px solid #ccc;
 }
 
+footer {
+    text-align: center;
+}
+
 
 
 /* For mobile devices and desktops in portrait orientation */
@@ -230,11 +234,10 @@ button.disabled {
     }
 
     footer {
-        background-color: yellow;
+        /* background-color: yellow; */
         flex-grow: 1;
         height: 10vh;
         max-height: 2rem;
-
     }
 
     button {
