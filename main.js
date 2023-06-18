@@ -16,11 +16,12 @@ let currentCategory = "";
 let currentTaskIndex = -1;
 let correctAnswers = 0;
 
-// Set variables for commonly used document elements
+// Set variables to make referenicng commonly used document elements easier
 let lblCurrentTask = document.getElementById('current-task');
 let lblCorrectTasks = document.getElementById('correct-tasks');
-let btnNextTask = document.getElementById("next-task-btn");
 let lblTaskFeedback = document.getElementById("task-feedback");
+let lblTaskTitle = document.getElementById("task-title");
+let btnNextTask = document.getElementById("next-task-btn");
 let navCategories = document.getElementById("categories-nav");
 let sctnTaskSelection = document.getElementById("task-selection");
 let sctnTaskDisplay = document.getElementById("task-display");
@@ -37,7 +38,7 @@ async function selectCategory(category) {
   sctnTaskSelection.hidden = true;
   sctnStatistics.hidden = true;
   sctnTaskDisplay.hidden = false;
-  toggleAside();
+  showAside();
   console.log(tasks);
 
   if (currentCategory === 'external') {
@@ -57,8 +58,8 @@ async function displayNextTask() {
   btnNextTask.hidden = true;
   currentTaskIndex++;
 
+  //External tasks have to be handled differently than internal ones
   if (currentCategory === "external") {
-    //External tasks have to be handled differently than internal ones
     //Fetch new pack of 10 external questions once current set is answered
     if (currentTaskIndex % 10 === 0) {
       try {
@@ -94,13 +95,13 @@ function displayTask(task) {
   let answerOptions = task.l.map((text, index) => ({ text, correct: index === 0 }));
   shuffleArray(answerOptions);
 
-  document.getElementById("task-title").textContent = task.a;
+  lblTaskTitle.textContent = task.a;
   if (currentCategory === 'part-math') {
-    katex.render(task.a, document.getElementById("task-title"), {
+    katex.render(task.a, lblTaskTitle, {
       throwOnError: false,
     });
   } else {
-    document.getElementById("task-title").textContent = task.a;
+    lblTaskTitle.textContent = task.a;
   }
 
   document.getElementById("task-content").innerHTML = "";
@@ -124,7 +125,6 @@ function displayTask(task) {
     answerButtons[i].onclick = function () {
       submitAnswer(this);
       answerButtons[i].classList.remove("disabled");
-      // answerButtons[i].classList.add(correct === true ? "correct" : "incorrect");
     };
   }
 }
@@ -139,6 +139,7 @@ function displayExternalTask() {
 
   document.getElementById("task-title").textContent = task.title;
   document.getElementById("task-content").innerHTML = task.text;
+  updateAside();
 
   let answerButtons = document.getElementsByClassName("answer-btn");
   for (let i = 0; i < answerOptions.length; i++) {
@@ -169,7 +170,6 @@ function submitAnswer(answerButton) {
     let answerButtons = document.getElementsByClassName("answer-btn");
     for (let i = 0; i < answerButtons.length; i++) {
       answerButtons[i].classList.add(answerButtons[i] === answerButton ? (correct ? "correct" : "incorrect") : "disabled");
-      // answerButtons[i].disabled = true;
     }
   }
 }
@@ -188,7 +188,6 @@ function showAnswerResult(correct) {
     correctAnswers++;
     document.getElementById("correct-answers").textContent = correctAnswers;
   }
-  // lblTaskFeedback.textContent = correct ? "Correct!" : "Incorrect";
   lblTaskFeedback.hidden = false;
   btnNextTask.hidden = false;
   updateAside();
@@ -197,9 +196,6 @@ function showAnswerResult(correct) {
 function showStatistics() {
   document.getElementById("task-display").hidden = true;
   document.getElementById("statistics").hidden = false;
-  //Toggle aside visibility
-  toggleAside();
-
 
   let totalTasks = currentTaskIndex;
   document.getElementById("total-tasks").textContent = totalTasks;
@@ -208,15 +204,18 @@ function showStatistics() {
   document.getElementById("percent-correct-answers").textContent = percentageCorrectAnswers.toFixed(2) + '%';
 }
 
-function toggleAside() {
-  // document.getElementById("aside-sidebar").display = "";
-  // document.getElementById("aside-sidebar").hidden = !document.getElementById("aside-sidebar").hidden;
-  lblCorrectTasks.hidden = !lblCorrectTasks.hidden;
-  lblCurrentTask.hidden = !lblCurrentTask.hidden;
+function showAside() {
+  lblCorrectTasks.hidden = false;
+  lblCurrentTask.hidden = false;
+}
+function hideAside() {
+  lblCorrectTasks.hidden = true;
+  lblCurrentTask.hidden = true;
 }
 
 function returnToStart() {
   toggleNavMenu();
+  hideAside();
   sctnTaskSelection.hidden = false;
   sctnTaskDisplay.hidden = true;
   sctnStatistics.hidden = true;
@@ -229,7 +228,6 @@ function returnToStart() {
 function toggleNavMenu() {
 
   if (matchMedia('all and (orientation: portrait)').matches) {
-    // let navCategories = document.getElementById("categories-nav");
     navCategories.style.display = (navCategories.style.display === "none" || navCategories.style.display === "") ? "block" : "none";
     let overlay = document.getElementById("overlay");
     overlay.style.display = (overlay.style.display === "none" || overlay.style.display === "") ? "block" : "none";
@@ -263,4 +261,10 @@ function shuffleArray(array) {
 function updateAside() {
   lblCurrentTask.textContent = currentTaskIndex + 1;
   lblCorrectTasks.textContent = correctAnswers;
+  if (currentCategory != "external") {
+    document.getElementById("remaining-tasks").textContent = (tasks[currentCategory].length - currentTaskIndex);
+  }
+  else {
+    document.getElementById("remaining-tasks").textContent = (32 - currentTaskIndex);
+  }
 }
