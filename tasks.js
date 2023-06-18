@@ -17,7 +17,6 @@ const server = "https://irene.informatik.htw-dresden.de:8888/api/quizzes";
 
 async function fetchQuiz(id) {
   const url = server + `?page=${id}`;
-  // console.log(url);
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + btoa(user + ':' + pass));
 

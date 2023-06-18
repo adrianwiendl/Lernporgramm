@@ -111,8 +111,8 @@ button {
     display: inline-block;
     font-size: 1rem;
     margin: 1rem 1rem;
-    transition-duration: 0.4s;
-    border: 1px solid transparent;
+    transition-duration: 0.2s;
+    border: 1px solid #4CAF50;
     border-radius: 0.5rem;
 }
 

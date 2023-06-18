@@ -19,6 +19,9 @@
         integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/1.2.93/vexflow-debug.js"></script>
+
+
     <link rel="icon" href="images/icon-512.png">
     <title>Learning App</title>
 </head>
@@ -65,14 +68,12 @@
         </section>
         <section id="task-display" hidden>
             <h2 id="task-title"></h2>
-            <div id="task-content"></div>
             <div id="answer-options">
                 <button class="answer-btn" onclick="submitAnswer(0)"></button>
                 <button class="answer-btn" onclick="submitAnswer(1)"></button>
                 <button class="answer-btn" onclick="submitAnswer(2)"></button>
                 <button class="answer-btn" onclick="submitAnswer(3)"></button>
             </div>
-            <div id="task-feedback" hidden></div>
             <button id="next-task-btn" onclick="displayNextTask()" hidden>Next Task</button>
         </section>
         <section id="statistics" hidden>
