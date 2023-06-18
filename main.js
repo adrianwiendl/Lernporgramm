@@ -221,11 +221,19 @@ function showStatistics() {
 }
 
 function showAside() {
+  if (matchMedia('all and (orientation: portrait)').matches) {
+    document.getElementById("aside-sidebar").style.display = "block";
+    document.getElementById("aside-sidebar").hidden = false;
+  }
   lblCorrectTasks.hidden = false;
   lblCurrentTask.hidden = false;
   lblRemainingTasks.hidden = false;
 }
 function hideAside() {
+  if (matchMedia('all and (orientation: portrait)').matches) {
+    document.getElementById("aside-sidebar").style.display = "none";
+    document.getElementById("aside-sidebar").hidden = true;
+  }
   lblCorrectTasks.hidden = true;
   lblCurrentTask.hidden = true;
   lblRemainingTasks.hidden = true;
@@ -258,6 +266,8 @@ function closeNavMenu(category) {
     navCategories.style.display = "";
     overlay.style.display = "";
   }
+  btnNextTask.textContent = "Next Task";
+  showAside();
   selectCategory(category)
 }
 
